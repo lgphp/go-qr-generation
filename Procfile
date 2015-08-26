@@ -1,1 +1,1 @@
-web: go-qr
+web: go-qr-generation
