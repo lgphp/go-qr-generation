@@ -1,0 +1,14 @@
+{
+	"ImportPath": "github.com/pid-t/go-qr-generation",
+	"GoVersion": "go1.5",
+	"Deps": [
+		{
+			"ImportPath": "github.com/boombuler/barcode",
+			"Rev": "63f4aa2c46ebfac93952223a52df876f30b064c0"
+		},
+		{
+			"ImportPath": "github.com/nfnt/resize",
+			"Rev": "dc93e1b98c579d90ee2fa15c1fd6dac34f6e7899"
+		}
+	]
+}
