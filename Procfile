@@ -1,1 +1,1 @@
-web: qr_gen
+web: go-qr
