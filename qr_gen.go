@@ -2,6 +2,7 @@ package main
 
 import (
 	"bytes"
+	"fmt"
 	"image"
 	"image/draw"
 	_ "image/gif"
@@ -10,6 +11,7 @@ import (
 	"log"
 	"net/http"
 	"net/url"
+	"os"
 	"strconv"
 	"strings"
 
@@ -118,11 +120,22 @@ func QrGenerator(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// Get the Port from the environment so we can run on Heroku
+func GetPort() string {
+	var port = os.Getenv("PORT")
+	// Set a default port if there is nothing in the environment
+	if port == "" {
+		port = "4747"
+		fmt.Println("INFO: No PORT environment variable detected, defaulting to " + port)
+	}
+	return ":" + port
+}
+
+// The main functions
 func main() {
 	http.HandleFunc("/qr", QrGenerator)
-	err := http.ListenAndServe(":5000", nil)
+	err := http.ListenAndServe(GetPort(), nil)
 	if err != nil {
 		log.Fatal("ListenAndServe: ", err)
 	}
-	log.Println("Listenning on :5000")
 }
