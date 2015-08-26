@@ -2,9 +2,6 @@ package main
 
 import (
 	"bytes"
-	"github.com/boombuler/barcode"
-	"github.com/boombuler/barcode/qr"
-	"github.com/nfnt/resize"
 	"image"
 	"image/draw"
 	_ "image/gif"
@@ -15,6 +12,10 @@ import (
 	"net/url"
 	"strconv"
 	"strings"
+
+	"github.com/boombuler/barcode"
+	"github.com/boombuler/barcode/qr"
+	"github.com/nfnt/resize"
 )
 
 func markWithLogo(r *http.Request, qrcode image.Image) image.Image {
@@ -119,9 +120,9 @@ func QrGenerator(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	http.HandleFunc("/qr", QrGenerator)
-	err := http.ListenAndServe(":8080", nil)
+	err := http.ListenAndServe(":5000", nil)
 	if err != nil {
 		log.Fatal("ListenAndServe: ", err)
 	}
-	log.Println("Listenning on :8080")
+	log.Println("Listenning on :5000")
 }
